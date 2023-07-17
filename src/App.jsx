@@ -6,6 +6,7 @@ import Box from './components/Box';
 import Plane from './components/Plane';
 import CameraControls from './components/CameraControl';
 import { SoftShadows } from '@react-three/drei';
+import Model from './components/Model';
 
 function App() {
   return (
@@ -31,9 +32,10 @@ function App() {
 
         <Plane />
 
-        <Box position={[0, 1, 0]} color="lightblue" />
+        {/* <Box position={[0, 1, 0]} color="lightblue" /> */}
         <Box position={[-2, 1, -5]} />
         <Box position={[5, 1, -2]} />
+        <Model scale={0.4} position={[0, -0.5, 0]} />
       </Canvas>
     </>
   );
