@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 import { useFrame } from 'react-three-fiber';
-import { useSpring, a } from 'react-spring';
+import { useSpring, animated } from '@react-spring/web';
 
 const Box = ({ position, color = 'pink', args }) => {
   const mesh = useRef(null);
@@ -9,15 +9,20 @@ const Box = ({ position, color = 'pink', args }) => {
     mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
   });
 
-  const [hover, setHober] = React.useState(false);
-  const props = useSpring({
-    color: hover ? 'orange' : 'lightblue',
-  });
+  const [expand, setExpand] = React.useState(false);
+  const [hovered, setHover] = React.useState(false);
 
   return (
-    <mesh castShadow position={position} ref={mesh}>
+    <mesh
+      castShadow
+      scale={expand ? 1.5 : 1}
+      onClick={(event) => setExpand(!expand)}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)}
+      position={position}
+      ref={mesh}>
       <boxGeometry attach="geometry" args={args} />
-      <meshStandardMaterial attach="material" color={color} />
+      <meshStandardMaterial attach="material" color={hovered ? 'orange' : color} />
     </mesh>
   );
 };
