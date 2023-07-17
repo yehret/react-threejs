@@ -4,6 +4,7 @@ import './App.scss';
 import { Canvas } from 'react-three-fiber';
 import Box from './components/Box';
 import Plane from './components/Plane';
+import CameraControls from './components/CameraControl';
 import { SoftShadows } from '@react-three/drei';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <>
       <Canvas shadows camera={{ position: [-5, 2, 10], fov: 60 }}>
         <SoftShadows size={15} samples={50} />
+        <CameraControls />
         <ambientLight intensity={0.3} />
         <pointLight position={[-10, 0, -20]} intensity={0.5} />
         <pointLight position={[0, -10, 0]} intensity={1.5} />

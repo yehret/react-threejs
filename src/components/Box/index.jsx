@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 
 import { useFrame } from 'react-three-fiber';
-import { useSpring, animated } from '@react-spring/web';
 
 const Box = ({ position, color = 'pink', args }) => {
   const mesh = useRef(null);
